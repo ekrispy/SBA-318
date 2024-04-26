@@ -7,14 +7,7 @@
 // The "users" data will be simple information about
 // the application's user base.
 
-const express = require('express');
-const router = express.Router();
-const users = require('../data/users');
 
-router
-    .get('/', (req, res) => {
-        res.json(users);
-    })
 
 const users = [
     {

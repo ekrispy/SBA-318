@@ -1,20 +1,19 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 3000;
-const posts = require('./data/posts.js');
-const comments = require('./data/comments.js');
+const users = require("./routes/users");
+const posts = require("./routes/posts");
 
-const users = require('./routes/users');
+const bodyParser = require("body-parser");
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
-
-// app.use('/posts', posts);
-// app.use('/comments', comments);
-app.use('/users', users);
-
-
+app.use("/users", users);
+app.use("/posts", posts);
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
-})
+  console.log(`Example app listening at http://localhost:${port}`);
+});
