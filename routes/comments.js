@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const comments = require("../data/comments");
+const userComments = require("../data/comments");
 
 router
  .route("/")
@@ -22,5 +23,15 @@ router
       next({ status: 400, message: "Insufficient Data" }); // Pass error object to next middleware
     }
   });
-
+  router
+ .route("/:id")
+ .get((req, res, next) => {
+    const comments = userComments.find((comments) => comments.mealId === parseInt(req.params.id));
+    if (comments) {
+      res.json(comments);
+    } else {
+      next({ status: 404, message: "Meal Not Found" });
+    }
+  });
+  
   module.exports = router;
