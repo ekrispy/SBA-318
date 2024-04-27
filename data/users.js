@@ -4,6 +4,8 @@
 // creating relationships between different data sets will be
 // explored during lessons on database integrations and techniques.
 
+const router = require("../routes/users");
+
 // The "users" data will be simple information about
 // the application's user base.
 
@@ -30,5 +32,4 @@ const users = [
     },
   ];
   
-  module.exports = users;
-  
+  module.exports = users
