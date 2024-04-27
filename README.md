@@ -3,7 +3,7 @@
 welcome to my Restfull API
 here you can navigate throught the urls posted on localhost:3000/
 
-on the users route a page will be rendered and you can make a post request by adding in a users info
+on the users route a page will be rendered and you can make a post request by adding in a users info to the list.  I had a hard time getting it to work, and then i accidienalty deleted something and it worked.
 
 the meals and commments route allows you to see that data, or you can filter it by the id paramater. 
 
