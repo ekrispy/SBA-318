@@ -3,6 +3,7 @@ const router = express.Router();
 const comments = require("../data/comments");
 
 router
+// ADD A NEW COMMENT
 .route("/")
 .get((req, res) => {
     res.json(comments); // Return comments data in JSON format
@@ -10,7 +11,6 @@ router
 .post((req, res, next) => {
     if (req.body.userId && req.body.mealId && req.body.comment) {
       const comment = {
-        id: comments[comments.length - 1].id + 1,
         userId: req.body.userId,
         mealId: req.body.mealId,
         comment: req.body.comment,
@@ -24,6 +24,7 @@ router
   });
 
 router
+// GET ALL COMMENTS FOR A USER
 .route("/:id")
 .get((req, res, next) => {
     const userId = parseInt(req.params.id);
@@ -36,6 +37,7 @@ router
       return next(error);
     }
   })
+// UPDATE A SINGLE COMMENT
 .patch((req, res, next) => {
     const userId = parseInt(req.params.id);
     const userComments = comments.filter((comment) => comment.userId === userId);
@@ -49,6 +51,7 @@ router
       return next(error);
     }
   })       
+// DELETE A SINGLE COMMENT
 .delete((req, res, next) => {
     const userId = parseInt(req.params.id);
     const userComments = comments.filter((comment) => comment.userId === userId);

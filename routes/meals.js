@@ -24,6 +24,7 @@ router
   });
 
 router
+// GET A SINGLE MEAL
 .route("/:id")
 .get((req, res, next) => {
     const meal = meals.find((meal) => meal.mealId === parseInt(req.params.id));
@@ -33,6 +34,7 @@ router
       next({ status: 404, message: "Meal Not Found" });
     }
   })
+// UPDATE A SINGLE MEAL
 .patch((req, res, next) => {
     const meal = meals.find((meal) => meal.id === parseInt(req.params.id));
     if (meal) {
@@ -47,6 +49,7 @@ router
       next({ status: 404, message: "Meal Not Found" });
     }
   })
+// DELETE A SINGLE MEAL
 .delete((req, res, next) => {
     const meal = meals.find((meal) => meal.id === parseInt(req.params.id));
     if (meal) {
